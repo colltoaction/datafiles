@@ -1,5 +1,7 @@
 """Shared configuration flags."""
 
+HIDE_INITIALIZATION_LOGGING = True
+
 HIDE_TRACEBACK_IN_HOOKS = True
 
 HOOKS_ENABLED = True

@@ -7,6 +7,7 @@ import pytest
 from datafiles import settings
 
 
+settings.HIDE_INITIALIZATION_LOGGING = False
 settings.HIDE_TRACEBACK_IN_HOOKS = False
 
 

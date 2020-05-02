@@ -52,7 +52,8 @@ parse = "^1.12"
 # Utilities
 cached_property = "^1.5"
 classproperties = "~0.1.3"
-minilog = "^1.4.1"
+# minilog = "^1.4.1"
+minilog = "1.6b3"
 
 # Typing
 typing-extensions = "^3.7"

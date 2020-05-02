@@ -2,9 +2,20 @@
 
 For libraries that wish to temporarily alter any of the previously described behavior, a handful of settings can be set at the module level. All boolean settings default to `True` unless otherwise noted.
 
+# `HIDE_INITIALIZATION_LOGGING`
+
+By default, logging in the `@datafile()` calls is disabled to avoid prematurely configuring logging for clients.
+If this information is needed to debug a complex issue, enable it as follows:
+
+```python
+import datafiles
+
+datafiles.settings.HIDE_INITIALIZATION_LOGGING = False
+```
+
 # `HIDE_TRACEBACK_IN_HOOKS`
 
-When an exception occurs in patched method, this traceback is hidden by default for `pytest`. If this information is required to debug a complex issue enable it as follows:
+When an exception occurs in patched method, this traceback is hidden by default for `pytest`. If this information is needed to debug a complex issue, enable it as follows:
 
 ```python
 import datafiles
@@ -48,9 +59,9 @@ to produce YAML like:
 
 ```yaml
 items:
-- 1
-- 2
-- 3
+  - 1
+  - 2
+  - 3
 ```
 
 # `YAML_LIBRARY`

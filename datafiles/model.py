@@ -13,7 +13,8 @@ class Model:
     Meta: config.Meta = config.Meta()
 
     def __post_init__(self):
-        log.debug(f'Initializing {self.__class__} object')
+        if not settings.HIDE_INITIALIZATION_LOGGING:
+            log.debug(f'Initializing {self.__class__} object')
 
         self.datafile = create_mapper(self)
 
@@ -25,8 +26,9 @@ class Model:
                 create = not self.datafile.manual
 
                 if path:
-                    log.debug(f'Datafile path: {path}')
-                    log.debug(f'Datafile exists: {exists}')
+                    if not settings.HIDE_INITIALIZATION_LOGGING:
+                        log.debug(f'Datafile path: {path}')
+                        log.debug(f'Datafile exists: {exists}')
 
                     if exists:
                         self.datafile.load(_first_load=True)
@@ -35,7 +37,8 @@ class Model:
 
                     hooks.apply(self, self.datafile)
 
-        log.debug(f'Initialized {self.__class__} object')
+        if not settings.HIDE_INITIALIZATION_LOGGING:
+            log.debug(f'Initialized {self.__class__} object')
 
     @classproperty
     def objects(cls) -> Manager:  # pylint: disable=no-self-argument
@@ -54,7 +57,9 @@ def create_model(
     auto_attr=None,
 ):
     """Patch model attributes on to an existing dataclass."""
-    log.debug(f'Converting {cls} to a datafile model')
+    if not settings.HIDE_INITIALIZATION_LOGGING:
+        log.debug(f'Converting {cls} to a datafile model')
+    log.error('test')
 
     if not dataclasses.is_dataclass(cls):
         raise ValueError(f'{cls} must be a dataclass')
